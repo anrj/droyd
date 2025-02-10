@@ -2,6 +2,6 @@ FROM node:22-alpine
 WORKDIR /app
 COPY package.json /app
 RUN npm install
-RUN apt update && apt install -y python3 python-is-python3 
+RUN apk add --no-cache python3 py3-pip
 COPY . /app
 CMD ["node", "index"]
