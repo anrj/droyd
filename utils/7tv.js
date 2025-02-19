@@ -35,7 +35,7 @@ export async function getEmoteURL(name, size) {
 	const response = await query7TV(searchQuery, { query: name });
 	if (response?.data?.emotes?.search?.items?.length > 0) {
 		const id = response.data.emotes.search.items[0].id;
-		return `[name](https://cdn.7tv.app/emote/${id}/${size}.webp)`;
+		return `[${name}](https://cdn.7tv.app/emote/${id}/${size}.webp)`;
 	}
 	else {
 		return 'No emote found';
