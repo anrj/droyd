@@ -25,11 +25,11 @@ module.exports = {
 		.setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
 		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]),
 	async execute(interaction) {
+		await interaction.deferReply();
 		const attachment = interaction.options.getAttachment('image');
 		const by = interaction.options.getString('by');
 		const quote = interaction.options.getString('quote');
 
-		await interaction.reply('🤖🤖🤖 WE WERE MECHS AND EXCREMENT');
 		await interaction.editReply({
 			content: '',
 			files: [await mtavari1(attachment, quote, by)],

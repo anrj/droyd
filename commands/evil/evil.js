@@ -12,8 +12,8 @@ module.exports = {
 		.setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
 		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]),
 	async execute(interaction) {
+		await interaction.dReply();
 		const originalGIF = interaction.options.getString('link');
-		await interaction.reply('🤖🤖🤖 EXECUTING PROCEDURE: BREATHE');
 		await interaction.editReply({
 			content: '',
 			files: [await evil(originalGIF)],

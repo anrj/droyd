@@ -19,10 +19,10 @@ module.exports = {
 		.setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
 		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]),
 	async execute(interaction) {
+		await interaction.deferReply();
 		const attachment = interaction.options.getAttachment('image');
 		const forgot = interaction.options.getString('forgot');
 
-		await interaction.reply('🤖🤖🤖 ROBOT EXISTANCE MATTERS');
 		await interaction.editReply({
 			content: '',
 			files: [await lebronforgot(attachment, forgot)],

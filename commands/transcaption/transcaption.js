@@ -20,11 +20,11 @@ module.exports = {
 		.setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
 		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]),
 	async execute(interaction) {
+		await interaction.deferReply();
 		const originalGIF = interaction.options.getString('link');
 		const from = interaction.options.getString('from') ?? 'eng';
 		const to = interaction.options.getString('to') ?? 'ka';
 
-		await interaction.reply('🤖🤖🤖 ACTIVATING FENTFUEL INJECTORS');
 		await interaction.editReply({
 			content: '',
 			files: [await transcaption2(originalGIF, from, to)],

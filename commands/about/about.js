@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, InteractionContextType, ApplicationIntegrationType } = require('discord.js');
+const path = require('path');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -7,9 +8,8 @@ module.exports = {
 		.setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
 		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]),
 	async execute(interaction) {
-		const videoPath = 'C:\\coding\\discord\\gd\\droyd2\\utils\\media\\assets\\ABOUT ME.mp4';
-
-		await interaction.reply('🤖🤖🤖 BOOTING UP THE FENTRACTOR');
+		await interaction.deferReply();
+		const videoPath = path.resolve(__dirname, '../../utils/media/assets/ABOUT ME.mp4');
 		await interaction.editReply({
 			content: '',
 			files: [videoPath],

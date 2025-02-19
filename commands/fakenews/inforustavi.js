@@ -19,10 +19,10 @@ module.exports = {
 		.setContexts([InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel])
 		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]),
 	async execute(interaction) {
+		await interaction.deferReply();
 		const attachment = interaction.options.getAttachment('image');
 		const caption = interaction.options.getString('caption');
 
-		await interaction.reply('🤖🤖🤖 FENTRACTOR OVERLOAD');
 		await interaction.editReply({
 			content: '',
 			files: [await inforustavi(attachment, caption)],

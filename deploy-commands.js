@@ -1,5 +1,5 @@
 const { REST, Routes } = require('discord.js');
-const { clientId, guildId, token } = require('./config.json');
+const { clientId, dev_clientId, guildId, prod_token, dev_token } = require('./config.json');
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -28,7 +28,7 @@ for (const folder of commandFolders) {
 	}
 }
 
-const rest = new REST().setToken(token);
+const rest = new REST().setToken(dev_token);
 
 (async () => {
 	try {
@@ -38,7 +38,7 @@ const rest = new REST().setToken(token);
 
 		// The put method is used to fully refresh all commands in the guild with the current set
 		const data = await rest.put(
-			Routes.applicationCommands(clientId),
+			Routes.applicationCommands(dev_clientId),
 			{ body: commands },
 		);
 
@@ -52,11 +52,11 @@ const rest = new REST().setToken(token);
 })();
 
 // Unregister guild-based commands
-// rest.delete(Routes.applicationGuildCommand(clientId, guildId, '1322686879107121296'))
-//	.then(() => console.log('Successfully deleted guild command'))
-//	.catch(console.error);
+// rest.delete(Routes.applicationGuildCommand(clientId, guildId, '1322686879107121294'))
+// 	.then(() => console.log('Successfully deleted guild command'))
+// 	.catch(console.error);
 
 // for global commands
-// rest.delete(Routes.applicationCommand(clientId, '1330942486473867316'))
-//	.then(() => console.log('Successfully deleted application command'))
+// rest.delete(Routes.applicationCommand(dev_clientId, '1341817095675187271'))
+// 	.then(() => console.log('Successfully deleted application command'))
 // 	.catch(console.error);
