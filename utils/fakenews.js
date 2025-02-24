@@ -20,11 +20,11 @@ const escapePango = (text) => {
 };
 
 async function mtavari1(image, quote, by) {
-	const mtavariOverlay = path.join(__dirname, 'media', 'assets', 'mtavari1-overlay.png');
+	const mtavariOverlay = path.join(__dirname, 'media', 'assets', 'mtavari', 'mtavari1-overlay.png');
 	const outputPath = path.join(__dirname, 'media', 'mtavari1.png');
-	const transparentImagePath1 = path.join(__dirname, 'media', 'mt1-transparent1.png');
-	const transparentImagePath2 = path.join(__dirname, 'media', 'mt1-transparent2.png');
-	const fontPath = path.join(__dirname, 'media', 'assets', 'gugeshashvili_5_mthavruli.ttf');
+	const transparentImagePath1 = path.join(__dirname, 'media', 'outputs', 'mt1-transparent1.png');
+	const transparentImagePath2 = path.join(__dirname, 'media', 'outputs', 'mt1-transparent2.png');
+	const fontPath = path.join(__dirname, 'media', 'assets', 'fonts', 'gugeshashvili_5_mthavruli.ttf');
 	const imageBuffer = await getImage(image);
 
 	const resizedImage = await sharp(imageBuffer).resize(1080, 1080, {
@@ -105,10 +105,10 @@ async function mtavari1(image, quote, by) {
 }
 
 async function mtavari2(image, caption) {
-	const mtavariOverlay = path.join(__dirname, 'media', 'assets', 'mtavari2-overlay.png');
-	const outputPath = path.join(__dirname, 'media', 'mtavari2.png');
-	const transparentImagePath = path.join(__dirname, 'media', 'mt2-transparent.png');
-	const fontPath = path.join(__dirname, 'media', 'assets', 'gugeshashvili_5_mthavruli.ttf');
+	const mtavariOverlay = path.join(__dirname, 'media', 'assets', 'mtavari', 'mtavari2-overlay.png');
+	const outputPath = path.join(__dirname, 'media', 'outputs', 'mtavari2.png');
+	const transparentImagePath = path.join(__dirname, 'media', 'outputs', 'mt2-transparent.png');
+	const fontPath = path.join(__dirname, 'media', 'assets', 'fonts', 'gugeshashvili_5_mthavruli.ttf');
 	const imageBuffer = await getImage(image);
 
 	const resizedImage = await sharp(imageBuffer).resize(1080, 1080, {
@@ -158,10 +158,10 @@ async function mtavari2(image, caption) {
 }
 
 async function inforustavi(image, caption) {
-	const InfoOverlay = path.join(__dirname, 'media', 'assets', 'inforustavi-overlay.png');
-	const outputPath = path.join(__dirname, 'media', 'inforustavi.png');
-	const transparentImagePath = path.join(__dirname, 'media', 'ir1-transparent.png');
-	const fontPath = path.join(__dirname, 'media', 'assets', 'ARArchySemiBold.ttf');
+	const InfoOverlay = path.join(__dirname, 'media', 'assets', 'inforustavi', 'inforustavi-overlay.png');
+	const outputPath = path.join(__dirname, 'media', 'outputs', 'inforustavi.png');
+	const transparentImagePath = path.join(__dirname, 'media', 'outputs', 'ir1-transparent.png');
+	const fontPath = path.join(__dirname, 'media', 'assets', 'fonts', 'ARArchySemiBold.ttf');
 	const imageBuffer = await getImage(image);
 
 	const resizedImage = await sharp(imageBuffer).resize(1080, 1080, {

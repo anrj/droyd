@@ -7,6 +7,7 @@ const { translate } = require('@vitalets/google-translate-api');
 const { fetchTenorGif } = require('./fetchTenorGif.js');
 const { negate_caption } = require('./negate.js');
 
+// Refactor this code to be DRY
 
 function isTenor(url) {
 	const regex = /^https:\/\/tenor\.com(\/.*)?$/;
@@ -14,8 +15,8 @@ function isTenor(url) {
 }
 
 async function transcaption(link, from, to) {
-	const filePath = path.join(__dirname, 'media', 'caption');
-	const filePath2 = path.join(__dirname, 'media', 'caption2.jpg');
+	const filePath = path.join(__dirname, 'media', 'outputs', 'caption');
+	const filePath2 = path.join(__dirname, 'media', 'outputs', 'caption2.jpg');
 
 	try {
 		const response = await axios.get(link, { responseType: 'arraybuffer' });
@@ -75,8 +76,8 @@ async function transcaption(link, from, to) {
 };
 
 async function transcaption2(link, from, to) {
-	const filePath = path.join(__dirname, 'media', 'gif.gif');
-	const filePath3 = path.join(__dirname, 'media', 'gifcaption');
+	const filePath = path.join(__dirname, 'media', 'outputs', 'gif.gif');
+	const filePath3 = path.join(__dirname, 'media', 'outputs', 'gifcaption');
 
 
 	try {
@@ -150,8 +151,8 @@ async function transcaption2(link, from, to) {
 }
 
 async function evilImage(link) {
-	const filePath = path.join(__dirname, 'media', 'evil.jpg');
-	const filePath3 = path.join(__dirname, 'media', 'evilcaption');
+	const filePath = path.join(__dirname, 'media', 'outputs', 'evil.jpg');
+	const filePath3 = path.join(__dirname, 'media', 'outputs', 'evilcaption');
 
 	try {
 		const response = await axios.get(link, { responseType: 'arraybuffer' });
@@ -223,8 +224,8 @@ async function evilImage(link) {
 }
 
 async function evil(link) {
-	const filePath = path.join(__dirname, 'media', 'evilgif.gif');
-	const filePath3 = path.join(__dirname, 'media', 'evilgifcaption');
+	const filePath = path.join(__dirname, 'media', 'outputs', 'evilgif.gif');
+	const filePath3 = path.join(__dirname, 'media', 'outputs', 'evilgifcaption');
 
 	try {
 		if (isTenor(link)) { link = await fetchTenorGif(link); };

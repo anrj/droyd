@@ -33,12 +33,12 @@ async function markupText(forgot) {
 
 async function lebronforgot(image, forgot) {
 	const textOverlay = await markupText(forgot);
-	const lebronOverlay = path.join(__dirname, 'media', 'assets', 'lebronfacepalm.png');
-	const raptvOverlay = path.join(__dirname, 'media', 'assets', 'raptv.png');
-	const outputPath = path.join(__dirname, 'media', 'forgot.png');
-	const transparentImagePath = path.join(__dirname, 'media', 'lf1-transparent.png');
-	const blackBackgroundPath = path.join(__dirname, 'media', 'lf1-background.png');
-	const fontPath = path.join(__dirname, 'media', 'assets', 'coolvetica compressed hv.otf');
+	const lebronOverlay = path.join(__dirname, 'media', 'assets', 'lebronforgot', 'lebronfacepalm.png');
+	const raptvOverlay = path.join(__dirname, 'media', 'assets', 'lebronforgot', 'raptv.png');
+	const outputPath = path.join(__dirname, 'media', 'outputs', 'forgot.png');
+	const transparentImagePath = path.join(__dirname, 'media', 'outputs', 'lf1-transparent.png');
+	const blackBackgroundPath = path.join(__dirname, 'media', 'outputs', 'lf1-background.png');
+	const fontPath = path.join(__dirname, 'media', 'assets', 'fonts', 'coolvetica compressed hv.otf');
 	const imageBuffer = await getImage(image);
 
 	const resizedImage = await sharp(imageBuffer).resize(728, 620, {

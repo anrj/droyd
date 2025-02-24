@@ -9,7 +9,7 @@ module.exports = {
 		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]),
 	async execute(interaction) {
 		await interaction.deferReply();
-		const videoPath = path.resolve(__dirname, '../../utils/media/assets/ABOUT ME.mp4');
+		const videoPath = path.resolve(__dirname, '../../utils/media/assets/about_me/ABOUT ME.mp4');
 		await interaction.editReply({
 			content: '',
 			files: [videoPath],

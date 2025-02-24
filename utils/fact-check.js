@@ -11,10 +11,10 @@ async function getImage(attachment) {
 }
 
 async function factcheck(image, by, as) {
-	const overlayPath = path.join(__dirname, 'media', 'assets', as.toString().toLowerCase() + '.png');
-	const outputPath = path.join(__dirname, 'media', 'factcheck.gif');
-	const arrowPath = path.join(__dirname, 'media', 'assets', 'arrow.gif');
-	const fontPath = path.join(__dirname, 'media', 'assets', 'PassengerSerif.otf');
+	const overlayPath = path.join(__dirname, 'media', 'assets', 'fact-check', as.toString().toLowerCase() + '.png');
+	const outputPath = path.join(__dirname, 'media', 'outputs', 'factcheck.gif');
+	const arrowPath = path.join(__dirname, 'media', 'assets', 'fact-check', 'arrow.gif');
+	const fontPath = path.join(__dirname, 'media', 'assets', 'fonts', 'PassengerSerif.otf');
 	const imageBuffer = await getImage(image);
 	const imageMetadata = await sharp(imageBuffer).metadata();
 	const overlayText = 'This post was fact checked by ' + by;
