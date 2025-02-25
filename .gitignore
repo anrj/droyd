@@ -2,6 +2,5 @@ config.json
 node_modules
 *.traineddata
 eslint.config.mjs
-media/*
-media/outputs
-!media/assets
+utils/media/*
+!utils/media/assets
