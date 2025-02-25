@@ -49,7 +49,7 @@ module.exports = {
 			withResponse: true,
 		});
 
-		const filter = i => i.customId === 'reveal' && i.user.id === interaction.user.id;
+		const filter = i => i.customId === 'reveal';
 		const collector = questionResponse.createMessageComponentCollector({ filter, time: 60000, max: 1 });
 
 		collector.on('collect', async i => {

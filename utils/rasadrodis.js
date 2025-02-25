@@ -19,7 +19,9 @@ async function scrapeMoazrovne() {
 	if (questionImageUrl) {
 		const imageResponse = await axios.get(questionImageUrl, { responseType: 'arraybuffer' });
 		const imageName = path.basename(questionImageUrl);
-		const imagePath = path.join(__dirname, 'media', 'outputs', 'rasadrodis', imageName);
+		const imageDir = path.join(__dirname, 'media', 'outputs', 'rasadrodis');
+		await fs.mkdir(imageDir, { recursive: true });
+		const imagePath = path.join(imageDir, imageName);
 		await fs.writeFile(imagePath, Buffer.from(imageResponse.data));
 	}
 	const answer = $('.answer_body .clearfix').first().find('.right_nofloat').text().trim();
