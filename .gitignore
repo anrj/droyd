@@ -3,4 +3,5 @@ node_modules
 *.traineddata
 eslint.config.mjs
 media/*
+media/outputs
 !media/assets
