@@ -50,7 +50,7 @@ module.exports = {
 		});
 
 		const filter = i => i.customId === 'reveal';
-		const collector = questionResponse.createMessageComponentCollector({ filter, time: 60000, max: 1 });
+		const collector = questionResponse.createMessageComponentCollector({ filter, time: 3_600_000, max: 1 });
 
 		collector.on('collect', async i => {
 			buttonRow.components[0].setDisabled(true);
