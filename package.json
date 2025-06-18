@@ -15,7 +15,6 @@
     "compromise": "^14.14.3",
     "discord.js": "^14.16.3",
     "natural": "^8.0.1",
-    "pythonia": "^1.2.1",
     "sharp": "^0.33.5",
     "tesseract.js": "^5.1.1"
   },
