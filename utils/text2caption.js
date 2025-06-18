@@ -18,7 +18,7 @@ async function createTextSvgWithFont(caption, imageWidth, evil = false) {
 	<defs>
      <style type="text/css">
                 text {
-                    font-family: 'Futura', 'Noto Sans Georgian', 'Roboto Condensed', 'Impact', sans-serif;
+                    font-family: 'Futura-Bold', 'Noto Sans Georgian', 'Roboto Condensed', 'Impact', sans-serif;
 										font-weight: 800;
                 }
       </style>
