@@ -6,23 +6,46 @@ async function getImage(attachment) {
 	if (!attachment.contentType.includes('image/')) {
 		throw new Error('File must be an image');
 	}
-	const response = await axios.get(attachment.url, { responseType: 'arraybuffer' });
+	const response = await axios.get(attachment.url, {
+		responseType: 'arraybuffer',
+	});
 	return response.data;
 }
 
 async function factcheck(image, by, as) {
-	const overlayPath = path.join(__dirname, 'media', 'assets', 'fact-check', as.toString().toLowerCase() + '.png');
+	const overlayPath = path.join(
+		__dirname,
+		'media',
+		'assets',
+		'fact-check',
+		as.toString().toLowerCase() + '.png',
+	);
 	const outputPath = path.join(__dirname, 'media', 'outputs', 'factcheck.gif');
-	const arrowPath = path.join(__dirname, 'media', 'assets', 'fact-check', 'arrow.gif');
-	const fontPath = path.join(__dirname, 'media', 'assets', 'fonts', 'PassengerSerif.otf');
+	const arrowPath = path.join(
+		__dirname,
+		'media',
+		'assets',
+		'fact-check',
+		'arrow.gif',
+	);
+	const fontPath = path.resolve(
+		__dirname,
+		'media',
+		'assets',
+		'fonts',
+		'PassengerSerif.otf',
+	);
 	const imageBuffer = await getImage(image);
 	const imageMetadata = await sharp(imageBuffer).metadata();
 	const overlayText = 'This post was fact checked by ' + by;
 	const isLandscape = imageMetadata.width - imageMetadata.height > 50;
 
-
 	const resizedOverlay = await sharp(overlayPath)
-		.resize({ width: isLandscape ? Math.round(imageMetadata.height * 0.69) : Math.round(imageMetadata.width * 0.69) })
+		.resize({
+			width: isLandscape
+				? Math.round(imageMetadata.height * 0.69)
+				: Math.round(imageMetadata.width * 0.69),
+		})
 		.extend({
 			bottom: Math.round(imageMetadata.height * 0.05),
 			background: { r: 0, g: 0, b: 0, alpha: 0 },
@@ -30,7 +53,11 @@ async function factcheck(image, by, as) {
 		.toBuffer();
 
 	const resizedArrow = await sharp(arrowPath, { animated: true })
-		.resize({ width: isLandscape ? Math.floor(imageMetadata.height * 0.25) : Math.floor(imageMetadata.width * 0.25) })
+		.resize({
+			width: isLandscape
+				? Math.floor(imageMetadata.height * 0.25)
+				: Math.floor(imageMetadata.width * 0.25),
+		})
 		.toBuffer();
 	const resizedArrowMD = await sharp(resizedArrow).metadata();
 
@@ -53,24 +80,25 @@ async function factcheck(image, by, as) {
 		})
 		.toBuffer();
 
-	const output = await sharp(imageBuffer).composite(
-		[
+	const output = await sharp(imageBuffer)
+		.composite([
 			{ input: resizedOverlay, gravity: 'south' },
-			{ input:
-        { text:
-          { text: `<span foreground="white">${overlayText}</span>`,
-          	font: 'Passenger Serif',
-          	fontfile: fontPath,
-          	height: isLandscape ? Math.round(imageMetadata.width * 0.2) : Math.round(imageMetadata.height * 0.4),
-          	width: Math.round(imageMetadata.width * 0.98),
-          	align: 'center',
-          	wrap: 'word',
-          	rgba: true,
-          },
-        },
+			{
+				input: {
+					text: {
+						text: `<span foreground="white">${overlayText}</span>`,
+						fontfile: fontPath,
+						height: isLandscape
+							? Math.round(imageMetadata.width * 0.2)
+							: Math.round(imageMetadata.height * 0.4),
+						width: Math.round(imageMetadata.width * 0.98),
+						align: 'center',
+						wrap: 'word',
+						rgba: true,
+					},
+				},
 			},
-		],
-	)
+		])
 		.toBuffer();
 
 	const toiletRollImage = await sharp({
@@ -89,18 +117,15 @@ async function factcheck(image, by, as) {
 		.toBuffer();
 
 	// Output path
-	await sharp(toiletRollImage, { animated : true }).composite(
-		[
+	await sharp(toiletRollImage, { animated: true })
+		.composite([
 			{ input: extendedLArrow, animated: true },
 			{ input: extendedRArrow, animated: true },
-		],
-	)
+		])
 		.toFile(outputPath);
-
 
 	return outputPath;
 }
-
 
 module.exports = {
 	factcheck,
