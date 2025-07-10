@@ -27,6 +27,7 @@
 - mass produce parody news channel social media posts _& more_
 
 examples:
+
 <img src="utils/media/assets/github/mtavari1ss.png"/>
 <img src="utils/media/assets/github/mtavari2ss.png"/>
 <img src="utils/media/assets/github/lebronforgot.png"/>
