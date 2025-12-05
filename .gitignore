@@ -4,3 +4,6 @@ node_modules
 eslint.config.mjs
 utils/media/*
 !utils/media/assets
+!utils/media/outputs
+utils/media/outputs/*
+!utils/media/outputs/.gitkeep
