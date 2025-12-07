@@ -87,6 +87,7 @@ async function factcheck(image, by, as) {
 				input: {
 					text: {
 						text: `<span foreground="white">${overlayText}</span>`,
+						font: 'Passenger Serif',
 						fontfile: fontPath,
 						height: isLandscape
 							? Math.round(imageMetadata.width * 0.2)

@@ -105,6 +105,7 @@ async function lebronforgot(image, forgot) {
 				input: {
 					text: {
 						text: textOverlay,
+						font: 'Coolvetica Compressed HV',
 						fontfile: fontPath,
 						width: 1000,
 						height: 400,

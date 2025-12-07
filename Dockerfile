@@ -9,7 +9,9 @@ RUN apk add --no-cache \
     ttf-dejavu \
     font-noto \
     font-noto-georgian \
-    font-awesome
+    font-awesome \
+    pango \
+    cairo
 COPY utils/media/assets/fonts/ /usr/share/fonts/custom/
 RUN chmod -R 644 /usr/share/fonts/custom/ && \
     fc-cache -f -v
