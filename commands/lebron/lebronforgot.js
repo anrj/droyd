@@ -4,7 +4,7 @@ const {
   ApplicationIntegrationType,
 } = require("discord.js");
 const { lebronforgot } = require("../../utils/lebronforgot.js");
-const { cleanupAll } = require("../../utils/cleanup.js");
+const { cleanup } = require("../../utils/cleanup.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
