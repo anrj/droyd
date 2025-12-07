@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, InteractionContextType, ApplicationIntegrationType } = require('discord.js');
 const { swapFace } = require('../../utils/gogichafy.js');
+const path = require('path');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -20,7 +21,7 @@ module.exports = {
 		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall]),
 	async execute(interaction) {
 		await interaction.deferReply();
-		const sourceImage = interaction.options.getAttachment('source-image');
+		let sourceImage = interaction.options.getAttachment('source-image');
 		const targetImage = interaction.options.getAttachment('target-image');
 		
     if (!sourceImage) {
