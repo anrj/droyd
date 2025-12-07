@@ -16,4 +16,4 @@ COPY utils/media/assets/fonts/ /usr/share/fonts/custom/
 RUN chmod -R 644 /usr/share/fonts/custom/ && \
     fc-cache -f -v
 COPY . /app
-CMD ["node", "index"]
+CMD ["sh", "prod_start.sh"]
