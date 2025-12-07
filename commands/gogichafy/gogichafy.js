@@ -22,6 +22,11 @@ module.exports = {
 		await interaction.deferReply();
 		const sourceImage = interaction.options.getAttachment('source-image');
 		const targetImage = interaction.options.getAttachment('target-image');
+		
+    if (!sourceImage) {
+      sourceImage = path.join(__dirname, '..', '..', 'utils', 'media', 'assets', 'gogichafy', 'gogichaaa.jpg');
+    }
+		
     const resultURL = await swapFace(sourceImage, targetImage)
 		await interaction.editReply({
 			content: resultURL,
